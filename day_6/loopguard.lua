@@ -1,5 +1,5 @@
 -- Day 6 Part 2 Advent of Code 2024
-local input = require("exampleinput")
+local input = require("input")
 
 DIRECTIONS = { "^", ">", "v", "<" }
 PATHS = {"|", "-", "|", "-"}
