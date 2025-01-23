@@ -76,7 +76,25 @@ function CompactDiskMap(expandeddiskmap)
   end
 end
 
+function CheckSum(compactdiskmap)
+  local result = 0
+  local fileid = 0
+  for i=1, #compactdiskmap do
+    local fileblock = GetCharAtIndex(compactdiskmap, i)
+    if fileblock == FREESPACE then
+      return result
+    else
+      result = result + (fileid * tonumber(fileblock))
+      fileid = fileid + 1
+    end
+  end
+end
+
 local expandeddiskmap = ExpandDiskMap(DISKMAP)
-print("COMPACT DISK MAP : \n"..CompactDiskMap(expandeddiskmap))
+print("EXPANDED DISK MAP : \n"..expandeddiskmap)
+local compactdiskmap = CompactDiskMap(expandeddiskmap)
+print("COMPACT DISK MAP : \n"..compactdiskmap)
+local checksum = CheckSum(compactdiskmap)
+print("CHECK SUM : "..checksum)
 
 
