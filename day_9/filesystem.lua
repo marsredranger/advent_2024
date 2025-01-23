@@ -3,7 +3,9 @@ DISKMAPLEN = #DISKMAP
 FREESPACE = "."
 IOTACOUNT = 0
 
-function Iota()
+function Iota(reset)
+  reset = reset or false
+  if reset then IOTACOUNT = 0 end
   local result = IOTACOUNT
   IOTACOUNT = IOTACOUNT + 1
   return result
@@ -78,14 +80,14 @@ end
 
 function CheckSum(compactdiskmap)
   local result = 0
-  local fileid = 0
+  local fileid = Iota(true)
   for i=1, #compactdiskmap do
     local fileblock = GetCharAtIndex(compactdiskmap, i)
     if fileblock == FREESPACE then
       return result
     else
       result = result + (fileid * tonumber(fileblock))
-      fileid = fileid + 1
+      fileid = Iota()
     end
   end
 end
