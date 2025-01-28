@@ -1,4 +1,4 @@
-DISKMAP = require("exampleinput")
+DISKMAP = require("input")
 FREESPACE = "."
 IOTACOUNT = 0
 
