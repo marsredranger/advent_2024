@@ -1,4 +1,4 @@
-local input = require("input")
+local input = require("exampleinput")
 
 HEIGHT=#input
 WIDTH=#input[1]
@@ -134,12 +134,7 @@ local trailheadposes = FindAll(input, 0)
 for _, startpos in pairs(trailheadposes) do
   local trails = {}
   CreateTrails(input, startpos,{startpos},trails)
-  local uniqtrailends = {}
-  for _, trail in ipairs(trails) do
-    local trailend = trail[#trail]
-    InsertIfUnique(uniqtrailends,trailend)
-  end
-  SUMOFSCORES = SUMOFSCORES + #uniqtrailends
+  SUMOFSCORES = SUMOFSCORES + #trails
 end
 --
 print("SUM OF SCORES : "..SUMOFSCORES)
