@@ -1,4 +1,4 @@
-local input = require("exampleinput")
+local input = require("input")
 
 HEIGHT=#input
 WIDTH=#input[1]
